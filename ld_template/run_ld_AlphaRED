@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH --job-name=scFv47_mm_ld         # job name
+#SBATCH --time=2-00:00:00               # max job run time dd-hh:mm:ss
+#SBATCH --nodes=2                       # Request 2 nodes
+#SBATCH --ntasks-per-node=13            # tasks (commands) per compute node
+#SBATCH --mem=64gb                      # total memory per node
+#SBATCH --partition=cpu
+#SBATCH --output=stdout.%j              # save stdout to file
+#SBATCH --error=stderr.%j               # save stderr to file
+
+########## VARIABLES ##################################
+# TODO Edit these variables as needed:
+
+module purge
+module load GCC/13.2.0  OpenMPI/4.1.6 Rosetta/3.14-mpi
+
+################################### COMMANDS ###################################
+
+jobstats &
+
+mpirun -np 28 rosetta_scripts.mpi.linuxgccrelease @flags_replica_dock
+
+jobstats
