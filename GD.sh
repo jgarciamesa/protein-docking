@@ -86,5 +86,5 @@ echo "Extracting PDB file for the best decoy"
 extract_pdbs.mpi.linuxgccrelease -in:file:silent decoys_${trimmed_decoy}_traj.out -in:file:tagfile I13R2-scFv47.tag
 mv I13R2-scFv47_Hs_*.pdb I13R2-scFv47_Hs.pdb
 
-# Delete output files and stats files
-rm output/decoys_*_traj.out
+# Delete output files
+rm decoys_*_traj.out
